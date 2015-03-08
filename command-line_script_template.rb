@@ -1,5 +1,8 @@
 #!/usr/bin/ruby
 
+# this script is base on example from
+# http://ruby-doc.org/stdlib-2.2.0/libdoc/optparse/rdoc/OptionParser.html
+
 require 'optparse'
 
 options = {}
@@ -10,16 +13,13 @@ OptionParser.new do |opts|
   opts.separator ''
   opts.separator 'Specific options:'
 
-  opts.on('-o', '--[no-]option', 'Option 1') do |v|
-    options[:verbose] = v
+  opts.on('-fFile', '--file=FILE', 'Set file path to FILE') do |f|
+    options[:file_path] = f
   end
 
   opts.separator ''
   opts.separator 'Common options:'
 
-  opts.on_tail('-v', '--[no-]verbose', 'Run verbosely') do |v|
-    options[:verbose] = v
-  end
   opts.on_tail('-h', '--help', 'Show this message') do
     puts opts
     exit
